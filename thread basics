@@ -1,0 +1,33 @@
+#include <string>
+#include <iostream>
+#include <thread>
+
+using namespace std;
+
+void sum(int n){
+    int sum=0;
+    for(int i=1;i<=n;i++)
+    {
+        sum+=i;
+    }
+    std::cout << " sum of first "<<n<<" is "  << sum << std::endl;
+}
+
+void prod(int n){
+    int prod=1;
+    for(int i=1;i<=n;i++)
+    {
+        prod*=i;
+    }
+    std::cout << " prod of first "<<n<<" is " << prod << std::endl;
+}
+
+int main(){
+    thread t1(sum,5);
+    thread t2(prod,5);
+    
+    t1.join();
+    t2.join();
+    
+    return 0;
+}
